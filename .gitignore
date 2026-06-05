@@ -1,0 +1,16 @@
+# Environment Variables
+.env
+.env.*
+
+# Project Specific
+/trash_bin/*
+!/trash_bin/.gitkeep
+/Original/*
+!/Original/.gitkeep
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Security
+*.pem
