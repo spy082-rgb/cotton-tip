@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>(사)면봉상사 | COTTON TIP TRADING CO.</title>
+    <script>
+        // Prevent browser from restoring scroll position BEFORE paint
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
     <meta name="description" content="by antigravity - 신뢰와 진심, 우아한 가치를 창조하는 (사)면봉상사입니다.">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -925,14 +932,6 @@
 </footer>
 
 <script>
-    // Force scroll to top on load (prevents browser from restoring scroll position)
-    if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-    }
-    window.addEventListener('load', () => {
-        setTimeout(() => { window.scrollTo(0, 0); }, 50);
-    });
-
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mainNav = document.querySelector('.main-nav');
