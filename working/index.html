@@ -80,6 +80,26 @@
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ivory);
+            cursor: pointer;
+            padding: 0.2rem;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-btn:hover {
+            color: var(--gold);
+        }
+
         .logo-wrap {
             display: flex;
             flex-direction: column;
@@ -353,17 +373,46 @@
 
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
+                flex-direction: row;
+                padding: 1.2rem 5%;
+            }
+            .header-left {
                 gap: 1rem;
-                padding: 1rem 5%;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 25, 47, 0.98);
+                border-top: 1px solid rgba(212, 175, 55, 0.3);
+                border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+                padding: 2rem 5%;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            }
+            .main-nav.active {
+                display: block;
+                animation: slideDown 0.3s ease-out forwards;
+            }
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
             }
             nav ul {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
             }
             nav a {
-                font-size: 0.75rem;
+                font-size: 1rem;
+                display: block;
+                width: 100%;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
             }
             section {
                 padding: 6rem 5%;
@@ -667,11 +716,16 @@
 <div class="gold-dust"></div>
 
 <header>
-    <div class="logo-wrap">
-        <span class="antigravity-tag">EXPERT NECK FOUNDATION</span>
-        <a href="#" class="logo">면봉<span>상사</span></a>
+    <div class="header-left">
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="logo-wrap">
+            <span class="antigravity-tag">EXPERT NECK FOUNDATION</span>
+            <a href="#" class="logo">면봉<span>상사</span></a>
+        </div>
     </div>
-    <nav>
+    <nav class="main-nav">
         <ul>
             <li><a href="#vision">Vision</a></li>
             <li><a href="#core">Core Business</a></li>
@@ -868,6 +922,20 @@
 </footer>
 
 <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.main-nav');
+    if (mobileMenuBtn && mainNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+            });
+        });
+    }
+
     // Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
