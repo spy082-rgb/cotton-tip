@@ -940,6 +940,13 @@
                 mainNav.classList.remove('active');
             });
         });
+        
+        // Close menu when scrolling
+        window.addEventListener('scroll', () => {
+            if (mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+            }
+        }, { passive: true });
     }
 
     // Intersection Observer
