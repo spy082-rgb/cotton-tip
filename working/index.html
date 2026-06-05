@@ -922,6 +922,12 @@
 </footer>
 
 <script>
+    // Force scroll to top on load (prevents browser from restoring scroll position)
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mainNav = document.querySelector('.main-nav');
