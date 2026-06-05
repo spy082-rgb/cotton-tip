@@ -372,6 +372,9 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
             header {
                 flex-direction: row;
                 padding: 1.2rem 5%;
@@ -926,7 +929,9 @@
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
-    window.scrollTo(0, 0);
+    window.addEventListener('load', () => {
+        setTimeout(() => { window.scrollTo(0, 0); }, 50);
+    });
 
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
